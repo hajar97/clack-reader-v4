@@ -6,13 +6,15 @@ sensor:
       mode:
         input: true
         pullup: true
+    internal_filter_mode: 'PULSE'
+    #internal_filter: 1ms
     filters:
+    #  - debounce: 1us
       - throttle_average: 300ms
-      - lambda: return x / id(pulse_per_liter);
+      - lambda: "return x / float(id(pulse_per_liter));"
     timeout: 6.5s
-    internal_filter_mode: PULSE
     icon: mdi:waves-arrow-right
-    unit_of_measurement: L/min # Gallons GPM or Liters per minute 
+    unit_of_measurement: L/min # Gallons GPM or Liters per minute
     accuracy_decimals: 2
     id: clack_flow_rate
     device_class: volume_flow_rate
